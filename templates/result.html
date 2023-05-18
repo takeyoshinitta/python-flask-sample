@@ -1,0 +1,31 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Greeting</h1>
+
+    {% if greeting %}
+        <p>{{ greeting }}</p>
+    {% elif error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <h2>List of Names</h2>
+    <ul class="name-list">
+        {% for name in names %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{{ url_for('greet') }}" method="POST">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
